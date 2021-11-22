@@ -12,7 +12,7 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idFood;
     private String nameFood;
-    private Float costFood;
+    private Double costFood;
     private String tagFood;
     private boolean isHave;
 
@@ -32,11 +32,11 @@ public class Menu {
         this.nameFood = nameFood;
     }
 
-    public Float getCostFood() {
+    public Double getCostFood() {
         return costFood;
     }
 
-    public void setCostFood(Float costFood) {
+    public void setCostFood(Double costFood) {
         this.costFood = costFood;
     }
 
@@ -54,5 +54,15 @@ public class Menu {
 
     public void setHave(boolean have) {
         isHave = have;
+    }
+
+    public Menu() {
+    }
+
+    public Menu(String nameFood, double costFood, String tagFood, boolean isHave) {
+        this.nameFood = nameFood;
+        this.costFood = costFood;
+        this.tagFood = tagFood;
+        this.isHave = isHave;
     }
 }
