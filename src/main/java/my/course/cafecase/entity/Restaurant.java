@@ -14,4 +14,27 @@ public class Restaurant {
     private String adress;
     private String phoneRest;
 
+    public Long getIdRestaurant() {
+        return idRestaurant;
+    }
+
+    public void setIdRestaurant(Long idRestaurant) {
+        this.idRestaurant = idRestaurant;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getPhoneRest() {
+        return phoneRest;
+    }
+
+    public void setPhoneRest(String phoneRest) {
+        this.phoneRest = phoneRest;
+    }
 }
