@@ -3,7 +3,7 @@ package my.course.cafecase.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Company {
+public class Menu {
 
 
 

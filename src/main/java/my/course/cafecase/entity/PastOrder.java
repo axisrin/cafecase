@@ -1,12 +1,10 @@
 package my.course.cafecase.entity;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Map;
 
+@Entity
 public class PastOrder {
 
     @Id
