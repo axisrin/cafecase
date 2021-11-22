@@ -9,7 +9,7 @@ public class PastOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; // Айди Прошедшего Заказа
+    private Long idPastOrder; // Айди Прошедшего Заказа
     private Long pastId; // Айди прошедшего заказа
     @ElementCollection
     private Map<Integer, String> orderMeal; // Состав заказа

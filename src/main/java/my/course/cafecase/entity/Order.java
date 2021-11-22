@@ -11,7 +11,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; // Айди Заказа
+    private Long idOrder; // Айди Заказа
     @ElementCollection
     private Map<Integer, String> orderMeal; // Состав заказа
     private Long clientId; // Айди заказчика
