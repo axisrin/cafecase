@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <header style="display: flex; flex-direction: row; align-items: center; justify-content: center" th:fragment="header_fr">
+      <div th:replace="~{fragments/logout :: logout_fr}"></div>
+      <span><a th:href="@{/user}">User</a></span>
+      <span><a th:href="@{/greeting}">Menu</a></span>
+      <span><a th:href="@{/}">Main</a></span>
+  </header>
+
+</body>
+</html>

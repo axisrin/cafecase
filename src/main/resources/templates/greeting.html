@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+  <div th:replace="~{fragments/header :: header}"></div>
   <p th:text="'Hello, man'"></p>
   <a th:href="@{/greeting}">Main Page</a>
 </body>
