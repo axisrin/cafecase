@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="food__list" th:fragment="food__list">
+    <div class="food__list__header">Список блюд</div>
+    <th:block th:each="food : ${foods}">
+        <div class="food__card">
+            <span class="food__info" th:utext="${food.idFood}"></span>
+            <span class="food__info" th:utext="${food.nameFood}"></span>
+            <span class="food__info" th:utext="${food.costFood}"></span>
+            <span class="food__info" th:utext="${food.tagFood}"></span>
+            <span class="food__info" th:utext="${food.isHave}"></span>
+            <span class="food__info" th:utext="${food.getAuthorName()}"></span>
+        </div>
+    </th:block>
+</div>
+
+</body>
+</html>

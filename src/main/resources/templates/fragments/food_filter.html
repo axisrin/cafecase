@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="food__filter" th:fragment="food__filter">
+    <div class="food__filter__label">Filter Food</div>
+    <form method="get" class="food__filter__form" th:action="@{/greeting}">
+        <input type="text" name="filterTag" class="filter__form__input" th:value="${filterTag}">
+        <button type="submit" class="filter__form__button">Filter</button>
+    </form>
+    <div th:if="${filterError}" class="food__filter__error">
+        <span th:utext="${filterError}"></span>
+    </div>
+</div>
+
+</body>
+</html>

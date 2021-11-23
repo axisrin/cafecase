@@ -1,9 +1,7 @@
 package my.course.cafecase.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
 public class Menu {
@@ -14,7 +12,22 @@ public class Menu {
     private String nameFood;
     private Double costFood;
     private String tagFood;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
     private boolean isHave;
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "undefined";
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     public Long getIdFood() {
         return idFood;
@@ -57,6 +70,14 @@ public class Menu {
     }
 
     public Menu() {
+    }
+
+    public Menu(String nameFood, Double costFood, String tagFood, User author, boolean isHave) {
+        this.nameFood = nameFood;
+        this.costFood = costFood;
+        this.tagFood = tagFood;
+        this.author = author;
+        this.isHave = isHave;
     }
 
     public Menu(String nameFood, double costFood, String tagFood, boolean isHave) {
