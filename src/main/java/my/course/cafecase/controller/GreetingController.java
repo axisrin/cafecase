@@ -4,19 +4,27 @@ import my.course.cafecase.entity.Menu;
 import my.course.cafecase.entity.User;
 import my.course.cafecase.repos.MenuRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 @Controller
 public class GreetingController {
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @Autowired
     private MenuRepo menuRepo;
@@ -55,9 +63,20 @@ public class GreetingController {
                       @RequestParam String nameFood,
                       @RequestParam Double costFood,
                       @RequestParam String tagFood,
+                      @RequestParam("file") MultipartFile file,
                       @RequestParam (required = false) boolean isHave,
-                      Model model) {
+                      Model model) throws IOException {
         Menu menu = new Menu(nameFood,costFood,tagFood,user,isHave);
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + file.getOriginalFilename();
+            file.transferTo(new File(uploadPath + "/" + resultFilename));
+            menu.setFilename(resultFilename);
+        }
         menuRepo.save(menu);
         Iterable<Menu> menus = menuRepo.findAll();
         model.addAttribute("foods",menus);

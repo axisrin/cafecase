@@ -10,6 +10,9 @@
     <div class="food__list__header">Список блюд</div>
     <th:block th:each="food : ${foods}">
         <div class="food__card">
+            <div th:if="${food.filename}">
+                <img style="max-width: 100px" th:src="@{/img/{filename}(filename = ${food.filename})}">
+            </div>
             <span class="food__info" th:utext="${food.idFood}"></span>
             <span class="food__info" th:utext="${food.nameFood}"></span>
             <span class="food__info" th:utext="${food.costFood}"></span>

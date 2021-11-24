@@ -16,9 +16,18 @@ public class Menu {
     @JoinColumn(name = "user_id")
     private User author;
     private boolean isHave;
+    public String filename;
 
     public User getAuthor() {
         return author;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public String getAuthorName() {

@@ -8,10 +8,11 @@
 
 <div class="food__insert" th:fragment="food__insert">
     <div class="food__insert__label">Add Food</div>
-    <form method="post" class="food__insert__form" th:action="@{/greeting}">
+    <form method="post" class="food__insert__form" th:action="@{/greeting}" enctype="multipart/form-data">
         <input type="text" name="nameFood" placeholder="Sign Name of Food" class="insert__form__input">
         <input type="number" step="0.01" name="costFood" placeholder="Sign The Cost of Food" class="insert__form__input">
         <input type="text" name="tagFood" placeholder="Sign the Tags of Food" class="insert__form__input">
+        <input type="file" name="file">
         <label for="isHave" class="food__info__label">Is Have</label><input type="checkbox" id="isHave" name="isHave" class="insert__form__input">
         <button type="submit" class="insert__form__button">Добавить</button>
     </form>
