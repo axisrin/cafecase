@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-<div class="food__insert" th:fragment="food__insert">
+<div sec:authorize ="hasAuthority('ADMIN')" class="food__insert" th:fragment="food__insert">
     <div class="food__insert__label">Add Food</div>
     <form method="post" class="food__insert__form" th:action="@{/greeting}" enctype="multipart/form-data">
         <input type="text" name="nameFood" placeholder="Sign Name of Food" class="insert__form__input">

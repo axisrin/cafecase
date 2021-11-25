@@ -11,9 +11,19 @@
         <span class="error-message" th:utext="${message}"></span>
     </div>
     <form th:action="@{/registration}" method="post">
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
-        <div><label> Email : <input type="email" name="email"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
+        <div class="mb-3">
+            <label for="usern" class="form-label"> User Name :</label>
+            <input type="text" id="usern" class="form-control" name="username" aria-describedby="emailHelp"/>
+            <div id="emailHelp" class="form-text">Username должен быть уникальным!</div>
+        </div>
+        <div class="mb-3">
+            <label for="ema" class="form-label"> Email : </label>
+            <input type="email" id="ema" class="form-control" name="email"/>
+        </div>
+        <div class="mb-3">
+            <label for="passw" class="form-label"> Password: </label>
+            <input type="password" id="passw" class="form-control" name="password"/>
+        </div>
         <div><input type="submit" value="Sign In"/></div>
     </form>
 </div>
