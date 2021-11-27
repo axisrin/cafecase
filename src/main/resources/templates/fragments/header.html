@@ -7,16 +7,16 @@
 </head>
 <body>
 
-  <header class="row align-items-center justify-content-center mb-3 w-100 p-2" style="background-color: #261414; color: #D9CBBF;" th:fragment="header_fr">
-      <div class="col text-center" style="text-decoration: none; color: #D9CBBF;"  th:if="${#httpServletRequest.remoteUser}">
-          <span>[[${#httpServletRequest.remoteUser}]]</span>
+  <header class="row m-0 align-items-center justify-content-center mb-3 w-100 p-2" style="margin-left: 0; background-color: #261414; color: #D9CBBF;" th:fragment="header_fr">
+      <div class="col text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; color: #D9CBBF;"  th:if="${#httpServletRequest.remoteUser}">
+          <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" >[[${#httpServletRequest.remoteUser}]]</span>
       </div>
-      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" sec:authorize ="hasAuthority('ADMIN')" style="text-decoration: none; color: #D9CBBF;" th:href="@{/user}">User</a></div>
-      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" style="text-decoration: none; color: #D9CBBF;" th:href="@{/greeting}">Menu</a></div>
-      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" style="text-decoration: none; color: #D9CBBF;" th:href="@{/}">Main</a></div>
+      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" sec:authorize ="hasAuthority('ADMIN')" style="text-decoration: none; color: #D9CBBF;" th:href="@{/user}">Пользователи</a></div>
+      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" style="text-decoration: none; color: #D9CBBF;" th:href="@{/greeting}">Меню</a></div>
+      <div style="text-decoration: none; color: #D9CBBF;" class="col text-center align-items-center justify-content-center"><a class="align-items-center justify-content-center" style="text-decoration: none; color: #D9CBBF;" th:href="@{/}">Корзина</a></div>
       <th:block th:if="!${#httpServletRequest.remoteUser}">
           <div class="col align-items-center text-center justify-content-center">
-            <a class="align-items-center text-center justify-content-center" style="text-decoration: none; color: #D9CBBF; border-radius: 5px; border-color: #D9CBBF; background: transparent;" th:text="LOGIN" th:href="@{/login}"></a>
+            <a class="align-items-center text-center justify-content-center" style="text-decoration: none; color: #D9CBBF; border-radius: 5px; border-color: #D9CBBF; background: transparent;" th:text="Авторизироваться" th:href="@{/login}"></a>
           </div>
       </th:block>
       <th:block th:if="${#httpServletRequest.remoteUser}">

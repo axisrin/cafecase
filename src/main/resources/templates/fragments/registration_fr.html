@@ -8,13 +8,13 @@
 
 <div class="registration__window" th:fragment="registration_fr">
     <div class="registration-error" th:if="${message}">
-        <span class="error-message" th:utext="${message}"></span>
+        <span  style="color: #D9CBBF; font-weight: 800" class="error-message" th:utext="${message}"></span>
     </div>
     <form th:action="@{/registration}" method="post">
         <div class="mb-3">
             <label for="usern" class="form-label"> User Name :</label>
             <input type="text" id="usern" class="form-control" name="username" aria-describedby="emailHelp"/>
-            <div id="emailHelp" class="form-text">Username должен быть уникальным!</div>
+            <div id="emailHelp" style="color: #D9CBBF" class="form-text">Username должен быть уникальным!</div>
         </div>
         <div class="mb-3">
             <label for="ema" class="form-label"> Email : </label>
@@ -24,7 +24,7 @@
             <label for="passw" class="form-label"> Password: </label>
             <input type="password" id="passw" class="form-control" name="password"/>
         </div>
-        <div><input type="submit" value="Sign In"/></div>
+        <div><input type="submit" style="background-color: #D9CBBF; border-color: #261414; border: 4px; border-radius: 5px;" value="Зарегистрироваться"/></div>
     </form>
 </div>
 

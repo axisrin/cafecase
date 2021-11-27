@@ -6,11 +6,11 @@
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+  <div th:replace="~{fragments/header :: header}"></div>
   <div class="container">
-    <div th:replace="~{fragments/header :: header}"></div>
-    <h3 class="m-1 w-100 text-center">Add new User</h3>
+    <h3 class="m-1 w-100 text-center" style="font-weight: 800">Страница Регистрации</h3>
     <div th:replace="~{fragments/registration_fr :: registration_fr}"></div>
-    <a th:href="@{/login}" style="text-decoration: none; color: #D9CBBF;" class="registration__to-login">Back to Login</a>
+    <a th:href="@{/login}" style="text-decoration: none; color: #D9CBBF; font-weight: 700" class="registration__to-login mt-2">Вернуться на страницу авторизации</a>
   </div>
 </body>
 </html>

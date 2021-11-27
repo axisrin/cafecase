@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <div th:replace="~{fragments/header :: header}"></div>
     <div class="container">
-        <div th:replace="~{fragments/header :: header}"></div>
         <div th:replace="~{fragments/food_insert :: food__insert}"></div>
         <div th:replace="~{fragments/food_filter :: food__filter}"></div>
         <div th:replace="~{fragments/food_list :: food__list}"></div>

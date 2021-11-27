@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 @Entity
-public class Order {
+public class RealOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,7 +49,7 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Order() {
+    public RealOrder() {
 
     }
 

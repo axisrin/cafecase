@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,20 +7,26 @@
 <body>
 
 <div class="food__list" th:fragment="food__list">
-    <div class="food__list__header">Список блюд</div>
-    <th:block th:each="food : ${foods}">
-        <div class="food__card">
-            <div th:if="${food.filename}">
-                <img style="max-width: 100px" th:src="@{/img/{filename}(filename = ${food.filename})}">
+    <div style="font-weight: 800; font-size: 25px;" class="food__list__header mt-3 md-1">Список блюд</div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <th:block th:each="food : ${foods}">
+            <div class="col">
+                <div class="card my-2" style="background-color: #735848; color: #D9CBBF">
+                    <div th:if="${food.filename}">
+                        <img class="card-img-top"  th:src="@{/img/{filename}(filename = ${food.filename})}">
+                    </div>
+                    <span sec:authorize ="hasAuthority('ADMIN')" style="margin: 7px;" class="card-text food__info" th:utext="${food.idFood}"></span>
+                    <span class="card-text food__info" style="margin: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" th:utext="${food.nameFood}"></span>
+                    <span class="card-text food__info" style="margin: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" th:utext="'Цена ' + ${food.costFood} + ' руб.'"></span>
+                    <span class="card-text food__info" style="margin: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" th:utext="'Состав ' + ${food.tagFood}"></span>
+                    <span class="card-text food__info" style="margin: 7px;" th:if="${food.isHave} == true">В наличии</span>
+                    <span class="card-text food__info" style="margin: 7px;" th:if="${food.isHave} == false">Не в наличии</span>
+                    <span class="card-text food__info" style="margin: 7px;" sec:authorize ="hasAuthority('ADMIN')" th:utext="${food.getAuthorName()}"></span>
+                    <button class="btn btn-outline-dark" style="background-color: #D9CBBF; color: #261414; margin: 7px; border-color: #261414" type="submit">В заказ</button>
+                </div>
             </div>
-            <span class="food__info" th:utext="${food.idFood}"></span>
-            <span class="food__info" th:utext="${food.nameFood}"></span>
-            <span class="food__info" th:utext="${food.costFood}"></span>
-            <span class="food__info" th:utext="${food.tagFood}"></span>
-            <span class="food__info" th:utext="${food.isHave}"></span>
-            <span class="food__info" th:utext="${food.getAuthorName()}"></span>
-        </div>
-    </th:block>
+        </th:block>
+    </div>
 </div>
 
 </body>
