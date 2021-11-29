@@ -2,15 +2,19 @@ package my.course.cafecase.controller;
 
 import my.course.cafecase.entity.Role;
 import my.course.cafecase.entity.User;
+import my.course.cafecase.entity.dto.CaptchaResponseDto;
 import my.course.cafecase.repos.UserRepo;
 import my.course.cafecase.service.MailSender;
 import my.course.cafecase.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.Collections;
@@ -19,13 +23,20 @@ import java.util.UUID;
 
 @Controller
 public class RegistrationController {
+    private final static String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
+
     @Autowired
     private UserService userService;
     @Autowired
     private UserRepo userRepo;
     @Autowired
     private MailSender mailSender;
+
     @Autowired
+    private RestTemplate restTemplate;
+
+    @Value("${recaptcha.secret}")
+    private String secret;
 
     @GetMapping("/registration")
     public String registration() {
@@ -35,15 +46,18 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(
             User user,
-//            @RequestParam("g-recaptcha-response") String captchaResponse,
+//            @RequestParam("g-recaptcha-response") String CaptchaResponse,
+            @RequestParam("g-recaptcha-response") String captchaResponse,
             Model model) {
-//        String url = String.format(CAPTCHA_URL, secret, captchaResponse);
-//        CaptchaResponseDTO response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDTO.class);
-//
-//        if (!response.isSuccess()) {
-//            model.addAttribute("message", "Заполните каптчу правильно!");
-//            return "registration";
-//        }
+        String url = String.format(CAPTCHA_URL, secret, captchaResponse);
+        CaptchaResponseDto response = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
+
+        if (!response.isSuccess()) {
+            model.addAttribute("message", "Заполните каптчу правильно!");
+            return "registration";
+        }
+
+
         User userFromDb = userRepo.findByUsername(user.getUsername());
         if (userFromDb != null) {
             model.addAttribute("message", "User exists Try to change User Name!");

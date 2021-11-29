@@ -21,7 +21,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 @Controller
-public class GreetingController {
+public class OrderController {
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -31,10 +31,10 @@ public class GreetingController {
 
     @GetMapping("/")
     public String greeting(Model model) {
-        return "greeting";
+        return "menu";
     }
 
-    @GetMapping("/greeting")
+    @GetMapping("/menu")
     public String mainGreet(@RequestParam(required = false) String filterTag, Model model) {
 
         List<Menu> menus = menuRepo.findAll();
@@ -58,7 +58,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("/greeting")
+    @PostMapping("/menu")
     public String add(@AuthenticationPrincipal User user,
                       @RequestParam String nameFood,
                       @RequestParam Double costFood,

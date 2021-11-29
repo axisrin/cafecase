@@ -12,10 +12,23 @@ public class PastOrder {
     private Long idPastOrder; // Айди Прошедшего Заказа
     private Long pastId; // Айди прошедшего заказа
     @ElementCollection
-    private Map<Integer, String> orderMeal; // Состав заказа
+    private Map<Long, Integer> orderMeal; // Состав заказа
     private Long clientId; // Айди заказчика
-    private Date orderDate; // Дата заказа
+    private boolean isGotov;
     private Date orderDatePast; // Дата выполнения заказа
+    private String pastOrderText; // Прошлый заказ
+
+    public PastOrder() {
+    }
+
+
+    public String getPastOrderText() {
+        return pastOrderText;
+    }
+
+    public void setPastOrderText(String pastOrderText) {
+        this.pastOrderText = pastOrderText;
+    }
 
     public Long getIdPastOrder() {
         return idPastOrder;
@@ -33,11 +46,11 @@ public class PastOrder {
         this.pastId = pastId;
     }
 
-    public Map<Integer, String> getOrderMeal() {
+    public Map<Long, Integer> getOrderMeal() {
         return orderMeal;
     }
 
-    public void setOrderMeal(Map<Integer, String> orderMeal) {
+    public void setOrderMeal(Map<Long, Integer> orderMeal) {
         this.orderMeal = orderMeal;
     }
 
@@ -49,12 +62,12 @@ public class PastOrder {
         this.clientId = clientId;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public boolean isGotov() {
+        return isGotov;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setGotov(boolean gotov) {
+        isGotov = gotov;
     }
 
     public Date getOrderDatePast() {

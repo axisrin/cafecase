@@ -22,30 +22,31 @@ create table menu (
 create table past_order (
     id_past_order int8 not null,
     client_id int8,
-    order_date timestamp,
+    is_gotov boolean,
     order_date_past timestamp,
+    past_order_text varchar(255),
     past_id int8,
     primary key (id_past_order)
 );
 
 create table past_order_order_meal (
     past_order_id_past_order int8 not null,
-    order_meal varchar(255),
-    order_meal_key int4 not null,
+    order_meal int4,
+    order_meal_key int8 not null,
     primary key (past_order_id_past_order, order_meal_key)
 );
 
 create table real_order (
     id_order int8 not null,
     client_id int8,
-    order_date timestamp,
+    is_gotov boolean,
     primary key (id_order)
 );
 
 create table real_order_order_meal (
     real_order_id_order int8 not null,
-    order_meal varchar(255),
-    order_meal_key int4 not null,
+    order_meal int4,
+    order_meal_key int8 not null,
     primary key (real_order_id_order, order_meal_key)
 );
 

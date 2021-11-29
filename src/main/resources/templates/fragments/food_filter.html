@@ -8,7 +8,7 @@
 
 <div class="food__filter" th:fragment="food__filter">
     <div style="font-weight: 800" class="food__filter__label">Фильтровать по составу!</div>
-    <form method="get" class="food__filter__form" th:action="@{/greeting}">
+    <form method="get" class="food__filter__form" th:action="@{/menu}">
         <input type="text" name="filterTag" class="form-control mb-2 filter__form__input" th:value="${filterTag}">
         <button type="submit" style="background-color: #D9CBBF; border-color: #261414; border: 4px; border-radius: 5px;" class="filter__form__button">Filter</button>
     </form>

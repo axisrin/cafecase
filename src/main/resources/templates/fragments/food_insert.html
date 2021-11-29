@@ -9,10 +9,10 @@
 <div sec:authorize ="hasAuthority('ADMIN')" class="food__insert" th:fragment="food__insert">
     <div style="font-weight: 800" class="food__insert__label">Добавить блюдо!</div>
     <div id="collapseExample" class="form-group">
-        <form method="post"  class="pt-2 pd-2" th:action="@{/greeting}" enctype="multipart/form-data">
-            <input type="text" class="form-control mt-1 md-1" required="true" name="nameFood" placeholder="Sign Name of Food">
-            <input type="number" class="form-control mt-1 md-1" required="true" step="0.01" name="costFood" placeholder="Sign The Cost of Food">
-            <input type="text" class="form-control mt-1 md-1" name="tagFood" required="true" placeholder="Sign the Tags of Food">
+        <form method="post"  class="pt-2 pd-2" th:action="@{/menu}" enctype="multipart/form-data">
+            <input type="text" class="form-control mt-1 md-1" required="true" name="nameFood" placeholder="Напишите название блюда">
+            <input type="number" class="form-control mt-1 md-1" required="true" step="0.01" name="costFood" placeholder="Напишите стоимость блюда. ххх.хх">
+            <input type="text" class="form-control mt-1 md-1" name="tagFood" required="true" placeholder="Напишите состав блюда">
             <input type="file" name="file" class="form-control mt-1 md-1">
             <div class="mt-1 mb-1">
                 <input type="checkbox" id="isHave" name="isHave" class="form-check-input insert__form__input">

@@ -13,9 +13,9 @@ public class RealOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idOrder; // Айди Заказа
     @ElementCollection
-    private Map<Integer, String> orderMeal; // Состав заказа
+    private Map<Long, Integer> orderMeal; // Состав заказа
     private Long clientId; // Айди заказчика
-    private Date orderDate; // Дата заказа
+    private boolean isGotov;
 
     public Long getIdOrder() {
         return idOrder;
@@ -25,11 +25,11 @@ public class RealOrder {
         this.idOrder = idOrder;
     }
 
-    public Map<Integer, String> getOrderMeal() {
+    public Map<Long, Integer> getOrderMeal() {
         return orderMeal;
     }
 
-    public void setOrderMeal(Map<Integer, String> orderMeal) {
+    public void setOrderMeal(Map<Long, Integer> orderMeal) {
         this.orderMeal = orderMeal;
     }
 
@@ -41,12 +41,12 @@ public class RealOrder {
         this.clientId = clientId;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public boolean isGotov() {
+        return isGotov;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setGotov(boolean gotov) {
+        isGotov = gotov;
     }
 
     public RealOrder() {
